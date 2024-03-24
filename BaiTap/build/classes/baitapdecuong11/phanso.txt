@@ -1,0 +1,3 @@
+PS{tu=5, mau=4}
+PS{tu=7, mau=5}
+PS{tu=53, mau=20}

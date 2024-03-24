@@ -1,0 +1,80 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package baitapdecuong1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Vtung
+ */
+public class Student extends Person {
+
+	private String maSinhVien;
+	private String email;
+	private double diemTongKet;
+
+	public Student() {
+	}
+
+	public Student(String maSinhVien, String email, double diemTongKet) {
+		this.maSinhVien = maSinhVien;
+		this.email = email;
+		this.diemTongKet = diemTongKet;
+	}
+
+	public Student(String maSinhVien, String email, double diemTongKet, String hoTen, String ngaySinh, String diaChi, String gioiTinh) {
+        super(hoTen, ngaySinh, diaChi, gioiTinh);
+        this.maSinhVien = maSinhVien;
+        this.email = email;
+        this.diemTongKet = diemTongKet;pop
+    }
+
+	public void hienThi() {
+		super.hienThi();
+		System.out.println("" + this.maSinhVien + "\t" + this.email + "\t" + this.diemTongKet + "");
+
+	}
+
+	public void nhap() {
+		super.nhap();
+		System.out.print("Mã sinh viên:");
+		this.maSinhVien = new Scanner(System.in).nextLine();
+		System.out.print("Email:");
+		this.email = new Scanner(System.in).nextLine();
+		System.out.print("Điểm tổng kết:");
+		this.diemTongKet = new Scanner(System.in).nextDouble();
+
+	}
+
+	public String getMaSinhVien() {
+		return maSinhVien;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public double getDiemTongKet() {
+		return diemTongKet;
+	}
+
+	public String getHoTen() {
+		return hoTen;
+	}
+
+	public String getNgaySinh() {
+		return ngaySinh;
+	}
+
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+}

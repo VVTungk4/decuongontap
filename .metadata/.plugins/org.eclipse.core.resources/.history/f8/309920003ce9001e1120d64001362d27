@@ -1,0 +1,124 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package OTC6;
+
+/**
+ *
+ * @author ACER
+ */
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Dictionary {
+	protected ArrayList<Word> wf = new ArrayList<>();
+
+	public Dictionary() {
+	}
+
+	public Dictionary(ArrayList<Word> wf) {
+		this.wf = wf;
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Nhap so luong tu ma ban muon them vao tu dien:");
+		int n = sc.nextInt();
+
+		sc.nextLine();
+
+		for (int i = 0; i < n; i++) {
+			System.out.println("Nhap thong tin cho tu thu " + (i + 1) + ":");
+			Word w = new Word();
+			w.nhap();
+
+			boolean tutontai = false;
+			for (Word word : wf) {
+				if (word.getEn().equalsIgnoreCase(w.getEn())) {
+					tutontai = true;
+					break;
+				}
+			}
+
+			if (tutontai) {
+				System.out.println("Tu '" + w.getEn() + "' da ton tai trong tu dien. Khong them vao tu dien.");
+			} else {
+				wf.add(w);
+			}
+		}
+
+		System.out.println("Tu dien da duoc cap nhat.");
+	}
+
+	public int timKiem(String e) {
+		int left = 0;
+		int right = wf.size() - 1;
+
+		while (left <= right) {
+			int mid = left + (right - left) / 2;
+			int a = wf.get(mid).getEn().compareToIgnoreCase(e);
+
+			if (a == 0) {
+				return mid;
+			} else if (a < 0) {
+				left = mid + 1;
+			} else {
+				right = mid - 1;
+			}
+		}
+
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		ArrayList<Word> wf = new ArrayList<>();
+		Dictionary dc = new Dictionary(wf);
+		Scanner sc = new Scanner(System.in);
+
+		while (true) {
+			System.out.println("------------CHUONG TRINH QUAN LY TU DIEN---------");
+			System.out.println("1. Nhap tu dien");
+			System.out.println("2. Hien thi tu dien da co");
+			System.out.println("3. Tim kiem tu dien");
+			System.out.println("4. Thoat");
+			System.out.print("Nhap lua chon cua ban: ");
+			int n = sc.nextInt();
+			sc.nextLine();
+
+			while (true) {
+				switch (n) {
+				case 1:
+					dc.nhap();
+					break;
+				case 2:
+					if (wf.isEmpty()) {
+						System.out.println("Tu dien hien dang trong.");
+					} else {
+						System.out.println("--------TU DIEN--------");
+						for (Word word : wf) {
+							System.out.println("Tu: " + word.getEn() + " - nghia la: " + word.getVn());
+						}
+					}
+					break;
+				case 3:
+					System.out.print("Nhap tu ban muon tim: ");
+					String e = sc.nextLine();
+					int i = dc.timKiem(e);
+					if (i != -1) {
+						System.out.println("Tim thay tu'" + e + "', nghia: " + wf.get(i).getVn());
+					} else {
+						System.out.println("Khong tim thay tu  '" + e + "' trong tu dien.");
+					}
+					break;
+				case 4:
+					System.out.println("Ket thuc");
+					return;
+				default:
+					System.out.println("Lua chon khong hop le vui long chon lai.");
+				}
+				break;
+			}
+		}
+	}
+}

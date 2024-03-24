@@ -1,0 +1,96 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package baitapdecuong8;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Duc Anh
+ */
+public class Number {
+    public double value,min,max;
+
+    public Number() {
+    }
+
+    public Number(double value, double min, double max) {
+        this.value = value;
+        this.min = min;
+        this.max = max;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public void setMin(double min) {
+        this.min = min;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public void setMax(double max) {
+        this.max = max;
+    }
+    public void nhap (){
+        try {
+            System.out.print("Value: ");
+            value = new Scanner(System.in).nextDouble();
+            System.out.print("Min: ");
+            do {
+                min = new Scanner(System.in).nextDouble();
+                if (min > value) {
+                    System.out.print("Vui lòng nhập lại.");
+                }
+            } while (min > value);
+            
+            System.out.print("Max: ");
+            do {
+                max = new Scanner(System.in).nextDouble();
+                if (max < value) {
+                    System.out.print("Vui lòng nhập lại.");
+                }
+            } while (max < value);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+    public boolean ktnt (){
+        for (int i = 2 ; i <= Math.sqrt(value); i++)
+        {
+            if(value == 1)
+            {
+                return true;
+            }
+            if (value == 2)
+            {
+                return true;
+            }
+            if (value % i == 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public void hienThi(){
+        System.out.println(value + " - Min: " + min + " - Max: " + max);
+    }
+    public String toHienThi()
+    {
+        return value + " - Min: " + min + " - Max: " + max;
+    }
+}

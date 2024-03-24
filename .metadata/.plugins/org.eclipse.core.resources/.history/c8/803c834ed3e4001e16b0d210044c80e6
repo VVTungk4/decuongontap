@@ -1,0 +1,12 @@
+package baitapdecuong5;
+
+public class SinhVien {
+	protected String maSinhVien;
+	protected String hoTen;
+	protected String ngaySinh;
+	protected String gioiTinh;
+	protected double diemTrungBinh;
+
+
+	
+}

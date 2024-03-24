@@ -1,0 +1,97 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Cau8;
+
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Duc Anh
+ */
+public class Main {
+    public static void nhapds (ArrayList<Number> number)
+    {
+        System.out.print("Nhập số lượng number: ");
+        int n = new Scanner(System.in).nextInt();
+        for (int i = 0 ; i < n ; i++)
+        {
+            System.out.println("Nhập số thứ " + (i+1));
+            Number so = new Number();
+            so.nhap();
+            number.add(so);
+        }
+    }
+    public static void hienThi(ArrayList<Number> number){
+        for (Number so : number)
+        {
+            so.hienThi();
+        }
+    }
+    public static void luu (ArrayList<Number> number)
+    {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\Users\\Duc Anh\\OneDrive\\Máy tính\\JAVA\\On_tap\\src\\Cau8\\Number.dat")));
+            for (Number so : number)
+            {
+                if (so.ktnt())
+                {
+                    bw.write(so.toHienThi());
+                    bw.newLine();
+                }
+            }
+            bw.close();
+        } catch (IOException ex) {
+            ex.getMessage();
+        }
+    }
+    public static void menu (ArrayList<Number> number){
+        System.out.println("1.Nhập thông tin.");
+        System.out.println("2.lưu số nguyên tô.");
+        System.out.println("3.Hiển thị.");
+        System.out.println("Chọn bất kì để thoát chương trình.");
+        System.out.print("Lựa chọn: ");
+        int x = new Scanner(System.in).nextInt();
+        switch (x) {
+            case 1:
+                nhapds(number);
+                menu(number);
+                break;
+            case 2: 
+                if (number.size() == 0)
+                {
+                    System.out.println("Mảng rỗng");
+                    menu(number);
+                    break;
+                }
+                luu(number);
+                menu(number);
+                break;
+            case 3:
+                if (number.size() == 0)
+                {
+                    System.out.println("Mảng rỗng");
+                    menu(number);
+                    break;
+                }
+                hienThi(number);
+                menu(number);
+                break;
+            default:
+                break;
+        }
+   }
+    public static void main(String[] args) {
+        ArrayList<Number> number = new ArrayList<>();
+        menu(number);
+    }
+}

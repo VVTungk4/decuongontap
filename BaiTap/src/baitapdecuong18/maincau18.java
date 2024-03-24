@@ -1,0 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package baitapdecuong18;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Lenovo
+ */
+public class maincau18 {
+	public static void main(String[] args) {
+		ArrayList<Canbo> ds = new ArrayList<>();
+		int n;
+		do {
+			System.out.println("Mời bạn chọn chức năng");
+			System.out.println("1. nhập thông tin");
+			System.out.println("2. hiển thị thông tin");
+			System.out.println("3. Lưu thông tin");
+			n = new Scanner(System.in).nextInt();
+			if (n == 1) {
+				Canbo cb = new Canbo();
+				cb.nhap();
+				ds.add(cb);
+			}
+			if (n == 2) {
+				for (Canbo d : ds) {
+					d.hienthi();
+				}
+
+			}
+			if (n == 3) {
+				ghifile(ds, "D:\\BaiTapJava\\BaiTap\\src\\baitapdecuong18\\canbo.dat");
+			}
+		} while (n == 1 || n == 2 || n == 3);
+	}
+
+	public static void ghifile(ArrayList<Canbo> ds, String path) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(path)));
+			for (Canbo cb : ds) {
+				bw.write(cb.toString());
+				bw.newLine();
+			}
+			bw.close();
+			System.out.println("Thành công");
+		} catch (Exception e) {
+			System.out.println("Thất bại");
+			e.printStackTrace();
+		}
+	}
+}

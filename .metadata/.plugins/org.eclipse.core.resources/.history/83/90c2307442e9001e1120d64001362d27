@@ -1,0 +1,87 @@
+package bai6chatgpt;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Dictionary {
+
+	private static Scanner scanner = new Scanner(System.in); // Sử dụng một đối tượng Scanner duy nhất
+
+	public static void nhaptu(ArrayList<Word> tudien) {
+		System.out.print("Nhập số lượng từ muốn thêm: ");
+		int n = scanner.nextInt();
+		scanner.nextLine(); // Loại bỏ newline
+		for (int i = 0; i < n; i++) {
+			System.out.println("Từ thứ " + (i + 1) + ":");
+			Word word = new Word();
+			System.out.print("Nhập id: ");
+			int id = scanner.nextInt();
+			scanner.nextLine(); // Loại bỏ newline
+			System.out.print("Nhập từ: ");
+			String en = scanner.nextLine();
+			System.out.print("Nhập nghĩa: ");
+			String vn = scanner.nextLine();
+			word.setId(id);
+			word.setEn(en);
+			word.setVn(vn);
+			tudien.add(word);
+		}
+	}
+
+	public static void timkiem(ArrayList<Word> tudien, String tu) {
+		Collections.sort(tudien, Comparator.comparing(Word::getEn));
+		boolean found = false;
+		for (Word word : tudien) {
+			if (word.getEn().equalsIgnoreCase(tu)) {
+				word.hienThi();
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			System.out.println("Không tìm thấy từ. Thêm vào từ điển.");
+			System.out.print("Nhập id: ");
+			int id = scanner.nextInt();
+			scanner.nextLine(); // Loại bỏ newline
+			System.out.print("Nhập nghĩa: ");
+			String vn = scanner.nextLine();
+			tudien.add(new Word(id, tu, vn));
+		}
+	}
+
+	public static void menu(ArrayList<Word> tudien) {
+		System.out.println("1.Thêm từ mới.");
+		System.out.println("2.Tìm kiếm.");
+		System.out.println("Ấn nút bất kì để thoát chương trình.");
+		System.out.print("Lựa chọn: ");
+		int x = scanner.nextInt();
+		scanner.nextLine(); // Loại bỏ newline
+
+		switch (x) {
+		case 1:
+			nhaptu(tudien);
+			break;
+		case 2:
+			if (tudien.isEmpty()) {
+				System.out.println("Từ điển trống!");
+			} else {
+				System.out.print("Nhập từ bạn muốn tra: ");
+				String tu = scanner.nextLine();
+				timkiem(tudien, tu);
+			}
+			break;
+		default:
+			System.out.println("Thoát chương trình.");
+			return;
+		}
+		menu(tudien); // Gọi đệ quy để quay về menu
+	}
+
+	public static void main(String[] args) {
+		ArrayList<Word> tudien = new ArrayList<>();
+		menu(tudien);
+	}
+}

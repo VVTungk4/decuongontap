@@ -1,0 +1,43 @@
+package baitapdecuong5;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+
+public class Main {
+	public static SinhVienHTTT nhap() {
+		SinhVienHTTT sv = new SinhVienHTTT();
+		sv.nhap();
+		return sv;
+	}
+
+	public static SinhVienUTT nhap1() {
+		SinhVienUTT sv = new SinhVienUTT();
+		sv.nhap();
+		return sv;
+	}
+
+	public static void ghiFileHTTT(ArrayList<SinhVienHTTT> ds, String path) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(path)));
+			for (SinhVienHTTT nv : ds) {
+				String line = nv.getMaSinhVien() + "\t" + nv.getHoTen() + "\t" + nv.getNgaySinh() + "\t"
+						+ nv.getGioiTinh() + "\t" + nv.getDiemTrungBinh() + "\t" + nv.getHocPhi();
+				// Ghi ra file
+				bw.write(line);
+				bw.newLine();
+			}
+			bw.close();
+			System.out.println("Ghi thành công");
+		} catch (Exception e) {
+			System.out.println("Thất bại");
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+	}
+}

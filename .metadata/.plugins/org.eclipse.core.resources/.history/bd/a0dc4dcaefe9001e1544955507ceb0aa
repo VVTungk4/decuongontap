@@ -1,0 +1,110 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cau19;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Lenovo
+ */
+public class Canbo extends Person {
+    private String pb ;
+    private float hsl, lcb, thuong, phat;
+
+    public Canbo() {
+        super();
+    }
+
+    public Canbo(String pb, float hsl, float lcb, float thuong, float phat) {
+        super();
+        this.pb = pb;
+        this.hsl = hsl;
+        this.lcb = lcb;
+        this.thuong = thuong;
+        this.phat = phat;
+    }
+        public void nhap()
+        {
+            super.nhap();
+            Scanner sc = new Scanner(System.in);
+            boolean isCheck= false  ;
+            do {
+                System.out.println("Nhập phòng ban: ");
+                pb= sc.nextLine();
+                if(pb.equals("đào tạo"))
+                {
+                    isCheck = true;
+                }
+                else if(pb.equals("tổ chức cán bộ"))
+                {
+                    isCheck = true;
+                }
+                else if (pb.equals("văn phòng khoa cntt")) {
+                    isCheck = true;
+                }
+                else isCheck = false;
+            } while (!isCheck);
+            System.out.println("Nhập hệ số lương: ");
+            hsl= sc.nextFloat();
+            System.out.println("Nhập lương cơ bản: ");
+            lcb= sc.nextFloat();
+            System.out.println("Nhập thưởng: ");
+            thuong=sc.nextFloat();
+            System.out.println("Nhập phạt: ");
+            phat= sc.nextFloat();
+        }
+        public float luongthuclinh()
+        {
+            return lcb*hsl+thuong-phat;
+        }
+        public void hienthi()
+        {
+            super.hienthi();
+            System.out.println("\t"+this.pb+"\t"+this.hsl+"\t"+this.lcb+"\t"+this.thuong+"\t"+this.phat+"\t"+luongthuclinh());
+        }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Canbo{" + "pb=" + pb + ", hsl=" + hsl + ", lcb=" + lcb + ", thuong=" + thuong + ", phat=" + phat + '}';
+    }
+
+    public void setPb(String pb) {
+        this.pb = pb;
+    }
+
+    public void setHsl(float hsl) {
+        this.hsl = hsl;
+    }
+
+    public void setLcb(float lcb) {
+        this.lcb = lcb;
+    }
+
+    public void setThuong(float thuong) {
+        this.thuong = thuong;
+    }
+
+    public void setPhat(float phat) {
+        this.phat = phat;
+    }
+
+    public void setHt(String ht) {
+        this.ht = ht;
+    }
+
+    public void setNs(String ns) {
+        this.ns = ns;
+    }
+
+    public void setDc(String dc) {
+        this.dc = dc;
+    }
+
+    public void setGt(String gt) {
+        this.gt = gt;
+    }
+        
+}

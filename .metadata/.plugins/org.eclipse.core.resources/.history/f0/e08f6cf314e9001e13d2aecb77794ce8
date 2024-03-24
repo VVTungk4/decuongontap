@@ -1,0 +1,62 @@
+package baitapdecuong4;
+
+import java.util.Scanner;
+
+public class Student extends Person {
+	private String maSinhVien;
+	private String email;
+	private double diemTongKet;
+
+	public Student() {
+	}
+
+	public Student(String maSinhVien, String email, double diemTongKet) {
+		this.maSinhVien = maSinhVien;
+		this.email = email;
+		this.diemTongKet = diemTongKet;
+	}
+
+	public Student(String maSinhVien, String email, double diemTongKet, String hoTen, String ngaySinh, String diaChi,
+			String gioiTinh) {
+		super(hoTen, ngaySinh, diaChi, gioiTinh);
+		this.maSinhVien = maSinhVien;
+		this.email = email;
+		this.diemTongKet = diemTongKet;
+	}
+
+	public void hienThi() {
+		super.hienThi();
+		System.out.println("" + this.maSinhVien + "\t" + this.email + "\t" + this.diemTongKet + "");
+
+	}
+
+	
+
+	public String getMaSinhVien() {
+		return maSinhVien;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public double getDiemTongKet() {
+		return diemTongKet;
+	}
+
+	public String getHoTen() {
+		return hoTen;
+	}
+
+	public String getNgaySinh() {
+		return ngaySinh;
+	}
+
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+}

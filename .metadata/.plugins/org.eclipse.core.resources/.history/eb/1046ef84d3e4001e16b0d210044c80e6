@@ -1,0 +1,23 @@
+package baitapdecuong5;
+
+public class SinhVien {
+	protected String maSinhVien;
+	protected String hoTen;
+	protected String ngaySinh;
+	protected String gioiTinh;
+	protected double diemTrungBinh;
+	
+	public SinhVien() {
+		
+	}
+
+	public SinhVien(String maSinhVien, String hoTen, String ngaySinh, String gioiTinh, double diemTrungBinh) {
+		this.maSinhVien = maSinhVien;
+		this.hoTen = hoTen;
+		this.ngaySinh = ngaySinh;
+		this.gioiTinh = gioiTinh;
+		this.diemTrungBinh = diemTrungBinh;
+	}
+
+	
+}
